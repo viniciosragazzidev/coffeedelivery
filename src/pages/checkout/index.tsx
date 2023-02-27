@@ -45,7 +45,7 @@ export default function Checkout() {
       return;
     } else {
       setSend(false);
-      alert('enviado')
+      alert("enviado");
       return;
     }
 
@@ -120,7 +120,7 @@ export default function Checkout() {
                 </span>
               </div>
 
-              <div className="input_box flex items-center gap-3 max-sm:flex-col">
+              <div className="input_box flex items-center max-sm:items-start gap-3 max-sm:flex-col">
                 <div className="relative">
                   <input
                     type="number"
