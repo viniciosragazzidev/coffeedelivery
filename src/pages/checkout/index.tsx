@@ -54,7 +54,7 @@ export default function Checkout() {
 
   return (
     <div className="w-full xl:px-[70px] max-2_xl:px-[60px]    max-xl:px-[40px] max-lg:px-[50px]  max-xs:px-4   py-24  max-[480px]:py-10 ">
-      <div className="flex gap-8 max-lg:flex-col-reverse">
+      <div className="flex gap-8 max-lg:flex-col">
         <div className="formArea text-black w-full  lg:max-w-[640px] flex flex-col gap-4 flex-1 ">
           <h2 className="baloo text-lg">Complete seu pedido</h2>
 
