@@ -22,7 +22,7 @@ export default function SidebarCart() {
 
   return (
     <div
-      className={` w-full max-w-[368px] max-sm:max-w-full max-h-screen overflow-y-scroll bg-base-white fixed top-0 right-0 z-50 p-6 px-4  transition-all ${
+      className={` w-full max-w-[368px] max-sm:max-w-full max-h-screen  overflow-y-scroll bg-base-white fixed top-0 right-0 z-50 p-6 px-4  transition-all ${
         openSidebarCart ? "translate-x-0" : "translate-x-[100%]"
       } `}
     >
@@ -34,7 +34,7 @@ export default function SidebarCart() {
       >
         <X size={26} weight="fill" className="text-purple" />
       </span>
-      <div className="content">
+      <div className="content h-full">
         <span className="title text-2xl roboto font-extrabold text-purple flex items-center gap-2">
           Carrinho
           <ShoppingCart size={24} weight="fill" />
@@ -110,7 +110,7 @@ export default function SidebarCart() {
         <div
           className={`${
             cart.length === 0 ? "block" : "hidden"
-          }  w-full flex justify-center items-center flex-col py-6 text-2xl roboto font-bold gap-2 text-yellow-dark`}
+          }  w-full max-sm:h-full   flex justify-center items-center flex-col py-6 text-2xl roboto font-bold gap-2 text-yellow-dark`}
         >
           <WarningCircle size={54} weight="light" />
           <span>Vazio</span>
