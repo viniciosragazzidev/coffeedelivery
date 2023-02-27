@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import americano from "../../medias/images/americano.png";
 import arabe from "../../medias/images/arabe.png";
 import cafeComLeite from "../../medias/images/cafeComLeite.png";
@@ -13,9 +13,10 @@ import irlandes from "../../medias/images/irlandes.png";
 import latte from "../../medias/images/latte.png";
 import machiato from "../../medias/images/machiato.png";
 import mochaccino from "../../medias/images/mochaccino.png";
-import { ShoppingCart } from "phosphor-react";
+import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { DadosContext } from "../../context/ContextApp";
 
-interface CoffeesType {
+export interface CoffeesType {
   id: number;
   image: string;
   type: string[];
@@ -31,37 +32,37 @@ const coffees = [
 
     image: expresso,
     type: ["tradicional"],
-    name: "Espresso Tradicional",
+    name: "Expresso Tradicional",
     desc: "O tradicional café feito com água quente e grãos moídos",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
     image: americano,
     type: ["tradicional"],
-    name: "Espresso Americano",
+    name: "Expresso Americano",
     desc: "Expresso diluído, menos intenso que o tradicional",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
     image: expressoCremoso,
     type: ["tradicional"],
-    name: "Espresso Cremoso",
+    name: "Expresso Cremoso",
     desc: "Café expresso tradicional com espuma cremosa",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
     image: cafeGelado,
     type: ["tradicional", "gelado"],
-    name: "Espresso Gelado",
+    name: "Expresso Gelado",
     desc: "Bebida preparada com café expresso e cubos de gelo",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -70,7 +71,7 @@ const coffees = [
     name: "Café com Leite",
     desc: "Meio a meio de expresso tradicional com leite vaporizado",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -79,7 +80,7 @@ const coffees = [
     name: "Latte",
     desc: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -88,7 +89,7 @@ const coffees = [
     name: "Capuccino",
     desc: "Bebida com canela feita de doses iguais de café, leite e espuma",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -97,7 +98,7 @@ const coffees = [
     name: "Macchiato",
     desc: "Café expresso misturado com um pouco de leite quente e espuma",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -106,7 +107,7 @@ const coffees = [
     name: "Mocaccino",
     desc: "Bebida feita com chocolate dissolvido no leite quente e café",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -115,7 +116,7 @@ const coffees = [
     name: "Chocolate Quente",
     desc: "Bebida feita com chocolate dissolvido no leite quente e café",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -124,7 +125,7 @@ const coffees = [
     name: "Cubano",
     desc: "Drink gelado de café expresso com rum, creme de leite e hortelã",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -133,7 +134,7 @@ const coffees = [
     name: "Havaiano",
     desc: "Bebida adocicada preparada com café e leite de coco",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -142,7 +143,7 @@ const coffees = [
     name: "Irlandês",
     desc: "Bebida com café, whisky e chantilly",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -151,7 +152,7 @@ const coffees = [
     name: "Latte",
     desc: "Uma dose de café com o dobro de leite e espuma cremosa",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -160,7 +161,7 @@ const coffees = [
     name: "Macchiato",
     desc: "Café expresso misturado com um pouco de leite quente e espuma",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -169,48 +170,34 @@ const coffees = [
     name: "Mocaccino",
     desc: "Bebida feita com chocolate dissolvido no leite quente e café",
     value: "9,90",
-    quantCart: 0,
+    quantCart: 1,
   },
 ];
 
 export default function CoffeCards() {
-  const [newCoffees, setNewCoffees] = useState<CoffeesType[]>([]);
+  const {
+    cart,
+    setCart,
+    newCoffees,
+    setNewCoffees,
+    handleClickPlus,
+    handleClickMinus,
+  } = useContext(DadosContext);
 
   useEffect(() => {
     setNewCoffees(coffees);
   }, []);
 
-  const handleClickPlus = (id: number) => {
-    const newC = newCoffees.map((coffee) => {
-      if (id === coffee.id) {
-        return {
-          ...coffee,
-          quantCart: coffee.quantCart + 1,
-        };
-      } else {
-        return coffee;
-      }
-    });
+  const handleCart = (id: number) => {
+    const cartTemp = [...cart];
+    const item = newCoffees.find((cofe) => cofe.id === id);
+    const cartI = cartTemp.find((cofe) => cofe.id === id);
+    if (item && item.name != cartI?.name) {
+      cartTemp.push(item);
+    }
 
-    setNewCoffees(newC);
-  };
-  const handleClickMinus = (id: number) => {
-    const newC = newCoffees.map((coffee) => {
-      if (id === coffee.id) {
-        if(coffee.quantCart > 0){
-          return {
-            ...coffee,
-            quantCart: coffee.quantCart - 1,
-          };
-        }else{
-          return coffee
-        }
-      } else {
-        return coffee;
-      }
-    });
-
-    setNewCoffees(newC);
+    // atualize o estado do carrinho com a nova matriz
+    setCart(cartTemp);
   };
   return (
     <div className="w-full grid grid-cols-4  max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 max-[480px]:justify-items-center gap-8 ">
@@ -258,7 +245,7 @@ export default function CoffeCards() {
                     }}
                     className="text-purple text-lg font-semibold cursor-pointer"
                   >
-                    -
+                    <Minus size={16} weight="fill" />
                   </span>
                   <input
                     type="number"
@@ -274,11 +261,16 @@ export default function CoffeCards() {
                     }}
                     className="text-purple text-lg font-semibold cursor-pointer"
                   >
-                    +
+                    <Plus size={16} weight="fill" />
                   </span>
                 </div>
 
-                <span className="p-[10px] bg-purple-dark rounded-md">
+                <span
+                  className="p-[10px] bg-purple-dark hover:bg-purple transition-colors cursor-pointer rounded-md"
+                  onClick={() => {
+                    handleCart(coffee.id);
+                  }}
+                >
                   <ShoppingCart
                     size={18}
                     weight="fill"

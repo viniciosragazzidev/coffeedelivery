@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { ShoppingCart, MapPin } from "phosphor-react";
 import logo from "../../medias/images/logo.png";
+import { DadosContext } from "../../context/ContextApp";
 
 export default function Header() {
+  const { cart, openSidebarCart, setOpenSidebarCart } =
+    useContext(DadosContext);
+
+
+  const handleButtonCart = () => {
+    
+    if (openSidebarCart) {
+      setOpenSidebarCart(false);
+    } else {
+      setOpenSidebarCart(true);
+    }
+  };
   return (
-    <header className="w-full lg:px-[166px] sm:py-8 sm:px-14 px-2 py-6 max-[480px]: pb-0 flex max-[480px]:flex-col max-[480px]:gap-6 justify-between items-center">
+    <header className="w-full fixed max-[480px]:relative z-40 xs:p-6 bg-base-white lg:px-[166px] sm:py-8 sm:pb-4 sm:px-14 px-2 py-6 max-[480px]:py-6 pb-0 flex max-[480px]:flex-col max-[480px]:gap-6 justify-between items-center">
       <div className="logo ">
         <img
           src={logo}
@@ -23,7 +36,12 @@ export default function Header() {
             iguaçu, RJ
           </span>
         </div>
-        <span className="icon_cart p-2 bg-yellow-light rounded-md  cursor-pointer ">
+        <span onClick={()=>{handleButtonCart()}} className="icon_cart p-2 bg-yellow-light rounded-md  cursor-pointer relative max-xs:fixed max-xs:left-0  max-xs:bottom-0 max-xs:m-4">
+          {cart.length > 0 ? (
+            <span className="quantCart bg-yellow-dark rounded-full text-base-white w-5 h-5 text-xs flex justify-center items-center">
+              {cart.length}
+            </span>
+          ) : null}
           <ShoppingCart size={18} weight="fill" className="text-yellow-dark" />
         </span>
       </div>

@@ -8,6 +8,10 @@ body * .baloo {
 body * .roboto {
   font-family: "Roboto", sans-serif;
 }
+body * .show {
+  transform: translateX(0);
+  animation: 0.6s ease-out forwards transformAnimation;
+}
 body * select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -31,4 +35,16 @@ body * section.hero {
   background-image: url(../medias/images/Background.png);
   background-position: center;
   background-size: cover;
+}
+body * .icon_cart.top {
+  transition: all 1s ease;
+  cursor: none;
+}
+body * .icon_cart.flutuante {
+  transition: all 1s ease;
+}
+body * .icon_cart .quantCart {
+  position: absolute;
+  right: -10px;
+  top: -40%;
 }/*# sourceMappingURL=global.css.map */

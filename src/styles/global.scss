@@ -9,7 +9,10 @@ body * {
   .roboto {
     font-family: "Roboto", sans-serif;
   }
-
+  .show {
+    transform: translateX(0);
+    animation: 0.6s ease-out forwards transformAnimation;
+  }
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -36,6 +39,23 @@ body * {
       background-image: url(../medias/images/Background.png);
       background-position: center;
       background-size: cover;
+    }
+  }
+
+  .icon_cart {
+    &.top {
+      transition: all 1s ease;
+      cursor: none;
+    }
+    &.flutuante {
+ 
+
+      transition: all 1s ease;
+    }
+    .quantCart {
+      position: absolute;
+      right: -10px;
+      top: -40%;
     }
   }
 }
