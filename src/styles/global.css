@@ -1,0 +1,34 @@
+@charset "UTF-8";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body * .baloo {
+  font-family: "Baloo 2", cursive;
+}
+body * .roboto {
+  font-family: "Roboto", sans-serif;
+}
+body * select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(../medias/icons/map.png);
+  background-repeat: no-repeat;
+  background-position: 10px;
+  /* adicione aqui um background-image para personalizar o ícone */
+}
+body * select::after {
+  content: "dadasd";
+  width: 100%;
+  height: 100%;
+}
+body * select option {
+  background-image: url(../medias/icons/map.png);
+  background-repeat: no-repeat;
+  background-position: 10px;
+}
+body * section.hero {
+  background-image: url(../medias/images/Background.png);
+  background-position: center;
+  background-size: cover;
+}/*# sourceMappingURL=global.css.map */
