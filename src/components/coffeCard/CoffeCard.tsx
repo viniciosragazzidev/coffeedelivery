@@ -34,7 +34,7 @@ const coffees = [
     type: ["tradicional"],
     name: "Expresso Tradicional",
     desc: "O tradicional café feito com água quente e grãos moídos",
-    value: "9,90",
+    value: "9.26",
     quantCart: 1,
   },
   {
@@ -43,7 +43,7 @@ const coffees = [
     type: ["tradicional"],
     name: "Expresso Americano",
     desc: "Expresso diluído, menos intenso que o tradicional",
-    value: "9,90",
+    value: "9.75",
     quantCart: 1,
   },
   {
@@ -52,7 +52,7 @@ const coffees = [
     type: ["tradicional"],
     name: "Expresso Cremoso",
     desc: "Café expresso tradicional com espuma cremosa",
-    value: "9,90",
+    value: "9.84",
     quantCart: 1,
   },
   {
@@ -61,7 +61,7 @@ const coffees = [
     type: ["tradicional", "gelado"],
     name: "Expresso Gelado",
     desc: "Bebida preparada com café expresso e cubos de gelo",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -70,7 +70,7 @@ const coffees = [
     type: ["tradicional", "com-leite"],
     name: "Café com Leite",
     desc: "Meio a meio de expresso tradicional com leite vaporizado",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -79,7 +79,7 @@ const coffees = [
     type: ["tradicional", "com leite"],
     name: "Latte",
     desc: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -88,7 +88,7 @@ const coffees = [
     type: ["tradicional", "com leite"],
     name: "Capuccino",
     desc: "Bebida com canela feita de doses iguais de café, leite e espuma",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -97,7 +97,7 @@ const coffees = [
     type: ["tradicional", "com leite"],
     name: "Macchiato",
     desc: "Café expresso misturado com um pouco de leite quente e espuma",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -106,7 +106,7 @@ const coffees = [
     type: ["tradicional", "com leite"],
     name: "Mocaccino",
     desc: "Bebida feita com chocolate dissolvido no leite quente e café",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -115,7 +115,7 @@ const coffees = [
     type: ["especial"],
     name: "Chocolate Quente",
     desc: "Bebida feita com chocolate dissolvido no leite quente e café",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -124,7 +124,7 @@ const coffees = [
     type: ["especial", "alcoólico", "gelado"],
     name: "Cubano",
     desc: "Drink gelado de café expresso com rum, creme de leite e hortelã",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -133,7 +133,7 @@ const coffees = [
     type: ["especial"],
     name: "Havaiano",
     desc: "Bebida adocicada preparada com café e leite de coco",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -142,7 +142,7 @@ const coffees = [
     type: ["especial", "alcoólico"],
     name: "Irlandês",
     desc: "Bebida com café, whisky e chantilly",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -151,7 +151,7 @@ const coffees = [
     type: ["tradicional", "com leite"],
     name: "Latte",
     desc: "Uma dose de café com o dobro de leite e espuma cremosa",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -160,7 +160,7 @@ const coffees = [
     type: ["tradicional", "com leite"],
     name: "Macchiato",
     desc: "Café expresso misturado com um pouco de leite quente e espuma",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
   {
@@ -169,7 +169,7 @@ const coffees = [
     type: ["tradicional", "com leite"],
     name: "Mocaccino",
     desc: "Bebida feita com chocolate dissolvido no leite quente e café",
-    value: "9,90",
+    value: "9.90",
     quantCart: 1,
   },
 ];

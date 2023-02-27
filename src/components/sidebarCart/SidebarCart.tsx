@@ -8,6 +8,7 @@ import {
   X,
 } from "phosphor-react";
 import { DadosContext } from "../../context/ContextApp";
+import { NavLink } from "react-router-dom";
 
 export default function SidebarCart() {
   const {
@@ -100,11 +101,17 @@ export default function SidebarCart() {
         </div>
 
         <div
-          className={`${cart.length > 0 ? "block" : "hidden"} buttonArea mt-14`}
+        onClick={()=>{setOpenSidebarCart(false)}}
+          className={`${
+            cart.length > 0 ? "block" : "hidden"
+          } buttonArea mt-14 w-full flex-1 flex`}
         >
-          <button className="w-full px-2 py-3 bg-yellow-dark text-base-white roboto font-bold uppercase rounded-md text-sm">
+          <NavLink
+            to={"/checkout"}
+            className="w-full flex justify-center px-2 py-3 bg-yellow-dark text-base-white roboto font-bold uppercase rounded-md text-sm"
+          >
             Finalizar compras
-          </button>
+          </NavLink>
         </div>
 
         <div

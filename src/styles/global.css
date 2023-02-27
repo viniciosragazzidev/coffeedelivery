@@ -47,4 +47,18 @@ body * .icon_cart .quantCart {
   position: absolute;
   right: -10px;
   top: -40%;
+}
+
+input.inputOpcional {
+  position: relative;
+}
+input.inputOpcional::after {
+  content: "Opcional";
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #000;
+  z-index: 999;
 }/*# sourceMappingURL=global.css.map */

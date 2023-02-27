@@ -8,7 +8,6 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen">
       <SidebarCart />
-      <Header />
       <section className="hero  lg:px-[100px]    sm:px-14 px-2 flex py-24 pt-48 max-[480px]:py-10  max-[970px]:flex max-[970px]:flex-col ">
         <div className="content flex-1 max-sm:px-4 max-[480px]:text-center">
           <h1 className="text-base-title font-extrabold baloo text-5xl max-sm:text-4xl ">

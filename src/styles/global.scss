@@ -33,7 +33,7 @@ body * {
 
     /* adicione aqui um background-image para personalizar o ícone */
   }
-
+ 
   section {
     &.hero {
       background-image: url(../medias/images/Background.png);
@@ -48,14 +48,27 @@ body * {
       cursor: none;
     }
     &.flutuante {
- 
-
       transition: all 1s ease;
     }
     .quantCart {
       position: absolute;
       right: -10px;
       top: -40%;
+    }
+  }
+}
+input {
+  &.inputOpcional {
+    position: relative;
+    &::after {
+      content: "Opcional";
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #000;
+      z-index: 999;
     }
   }
 }
