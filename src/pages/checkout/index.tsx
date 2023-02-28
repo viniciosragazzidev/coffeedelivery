@@ -75,7 +75,7 @@ export default function Checkout() {
               </div>
             </header>
 
-            <form className="mt-8 flex flex-col gap-4">
+            <form className="mt-8 flex flex-col gap-5">
               <div className="input_cep relative">
                 <input
                   type="number"
@@ -120,7 +120,7 @@ export default function Checkout() {
                 </span>
               </div>
 
-              <div className="input_box flex items-center max-sm:items-start gap-3 max-sm:flex-col">
+              <div className="input_box flex items-center max-sm:items-start gap-5 max-sm:flex-col">
                 <div className="relative">
                   <input
                     type="number"
@@ -135,9 +135,9 @@ export default function Checkout() {
                     className="w-full max-w-[200px] p-3 max-sm:max-w-none placeholder:text-base-label text-base-text roboto bg-base-input border-base-button border rounded focus:outline-none focus:border-yellow-dark"
                   />
                   <span
-                    className={`absolute left-0 bottom-[-25px] text-xs text-red-500  ${
-                      send && numeroValue.length === 0 ? "block" : "hidden"
-                    }`}
+                    className={`absolute left-0 bottom-[-16px]  text-xs text-red-500  ${
+                        send && numeroValue.length === 0 ? "block" : "hidden"
+                      } `}
                   >
                     Faltam dados obigatórios.
                   </span>
