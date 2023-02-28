@@ -65,11 +65,11 @@ export default function Checkout() {
                 weight="light"
                 className="text-yellow-dark"
               />
-              <div className="text">
+              <div className="text flex flex-col max-sm:gap-2">
                 <span className="roboto text-base-subtitle">
                   Endereço de Entrega
                 </span>
-                <p className="text-sm roboto text-base-text">
+                <p className="text-sm max-sm:text-xs roboto text-base-text">
                   Informe o endereço onde deseja receber seu pedido
                 </p>
               </div>
@@ -136,8 +136,8 @@ export default function Checkout() {
                   />
                   <span
                     className={`absolute left-0 bottom-[-16px]  text-xs text-red-500  ${
-                        send && numeroValue.length === 0 ? "block" : "hidden"
-                      } `}
+                      send && numeroValue.length === 0 ? "block" : "hidden"
+                    } `}
                   >
                     Faltam dados obigatórios.
                   </span>
@@ -174,9 +174,9 @@ export default function Checkout() {
                 weight="light"
                 className="text-purple"
               />
-              <div className="text">
+              <div className="text flex flex-col max-sm:gap-2">
                 <span className="roboto text-base-subtitle">Pagamento</span>
-                <p className="text-sm roboto text-base-text">
+                <p className="text-sm max-sm:text-xs roboto text-base-text">
                   O pagamento é feito na entrega. Escolha a forma que deseja
                   pagar{" "}
                 </p>
@@ -250,10 +250,10 @@ export default function Checkout() {
                   </div>
                   <div className="w-full flex flex-col gap-2">
                     <div className="top w-full flex justify-between items-center roboto ">
-                      <span className="text-base max-sm:text-sm">
+                      <span className="text-base max-sm:text-sm max-sm:text-xs">
                         {product.name}
                       </span>
-                      <span className="text-base max-sm:text-sm font-bold text-base-text">
+                      <span className="text-base max-sm:text-sm max-sm:text-xs font-bold text-base-text">
                         R${product.value}
                       </span>
                     </div>
@@ -301,18 +301,20 @@ export default function Checkout() {
               ))}
             </div>
           </div>
-          <div className="infos_cart py-6 px-10 flex flex-col gap-3 bg-base-card">
+          <div className="infos_cart py-6 px-10 max-sm:px-4 flex flex-col gap-3 bg-base-card">
             <div className="flex justify-between">
-              <span className="roboto  text-sm text-base-text">
+              <span className="roboto  text-sm max-sm:text-xs text-base-text">
                 Total de itens
               </span>
-              <span className="roboto  text-sm text-base-text">
+              <span className="roboto  text-sm max-sm:text-xs text-base-text">
                 R$ {totalValue.toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="roboto  text-sm text-base-text">Entrega</span>
-              <span className="roboto  text-sm text-base-text">
+              <span className="roboto  text-sm max-sm:text-xs text-base-text">
+                Entrega
+              </span>
+              <span className="roboto  text-sm max-sm:text-xs text-base-text">
                 R$ {((cart.length / 3) * 3.5).toFixed(2)}
               </span>
             </div>
@@ -329,7 +331,7 @@ export default function Checkout() {
               onClick={() => {
                 handleConfirm();
               }}
-              className="w-full flex justify-center px-2 py-3 bg-yellow hover:bg-yellow-dark transition-all cursor-pointer text-base-white roboto font-bold uppercase rounded-md text-sm"
+              className="w-full flex justify-center px-2 py-3 bg-yellow hover:bg-yellow-dark transition-all cursor-pointer text-base-white roboto font-bold uppercase rounded-md text-sm max-sm:text-xs"
             >
               Confirmar pedido
             </span>
