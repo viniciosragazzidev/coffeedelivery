@@ -1,22 +1,32 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { DadosContext } from "../../context/ContextApp";
 import Illustration from "../../medias/images/Illustration.png";
 export default function Success() {
   const {
     metSelect,
 
-    cepValue,
+    bairroValue,
+    cidadeValue,
+    ufValue,
 
     ruaValue,
 
     numeroValue,
 
     complemento,
+    cart
   } = useContext(DadosContext);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (cart.length === 0) {
+      navigate("/");
+    }
+  }, [cart]);
   return (
-    <div className="grid lg:grid-cols-2 max-lg:gap-5  xl:px-[70px] max-2_xl:px-[60px]  justify-items-center   max-xl:px-[40px] max-lg:px-[50px]  max-xs:px-4   py-16  max-[480px]:py-10">
+    <div className=" successPage grid lg:grid-cols-2 max-lg:gap-5  xl:px-[70px] max-2_xl:px-[60px]  justify-items-center    max-xl:px-[40px] max-lg:px-[50px]  max-xs:px-4   py-16  max-[480px]:py-10">
       <div className="max-lg:w-full max-w-xl ">
         <h1 className="baloo text-3xl text-yellow-dark">
           Uhu! Pedido confirmado
@@ -25,7 +35,7 @@ export default function Success() {
           Agora é só aguardar que logo o café chegará até você
         </p>
 
-        <div className="card flex flex-col gap-8 mt-10 p-10 border border-yellow rounded-tr-3xl rounded-bl-3xl">
+        <div className="card flex flex-col gap-8 mt-10 p-8 border border-yellow rounded-tr-3xl rounded-bl-3xl">
           <div className="flex items-center gap-3">
             <span className="p-2 bg-purple text-base-white rounded-full">
               <MapPin size={18} weight="fill" />
@@ -37,7 +47,7 @@ export default function Success() {
                   {ruaValue}, {numeroValue}
                 </span>
                 <br />
-                {complemento}
+                {complemento} - {bairroValue} - {cidadeValue},{ufValue}
               </span>
               <span></span>
             </div>
@@ -57,7 +67,13 @@ export default function Success() {
             </span>
             <div className="roboto text-base-text flex flex-col">
               <span className="">Pagamento na entrega</span>
-              <div className="font-bold">{metSelect === 'credito' ? 'Cartão de Crédito' : metSelect === 'debito' ? 'Cartão de Débito' : 'Dinheiro'}</div>
+              <div className="font-bold">
+                {metSelect === "credito"
+                  ? "Cartão de Crédito"
+                  : metSelect === "debito"
+                  ? "Cartão de Débito"
+                  : "Dinheiro"}
+              </div>
             </div>
           </div>
         </div>

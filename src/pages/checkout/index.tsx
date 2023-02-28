@@ -7,13 +7,19 @@ import {
   Minus,
   Money,
   Plus,
+  Spinner,
   Trash,
 } from "phosphor-react";
 import { DadosContext } from "../../context/ContextApp";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Checkout() {
-  const { cart, handleClickPlus, handleClickMinus, handleRemoveItemCard,   metSelect,
+  const {
+    cart,
+    handleClickPlus,
+    handleClickMinus,
+    handleRemoveItemCard,
+    metSelect,
     setMetSelect,
     cepValue,
     setCepValue,
@@ -22,14 +28,45 @@ export default function Checkout() {
     numeroValue,
     setNumeroValue,
     complemento,
-    setComplemento, } =
-  useContext(DadosContext);
+    setComplemento,
+    loadingReq,
+    setLoadingReq,
+ 
+    setBairro,
+    setCidadeValue,
+    setUfValue,
+  } = useContext(DadosContext);
+
+
+  const cepFocus =()=>{
+
+  }
+  const cepOnBlur = ()=>{
+    if(cepValue.length > 7 && cepValue.length < 10){
+      const teste = /^\d{8}$|^\d{5}-\d{3}$/.test(cepValue);
+
+      
+      if(teste){
+        fetch(`https://viacep.com.br/ws/${cepValue}/json`)
+        .then(res => res.json() )
+        .then((data)=>{ setRuaValue(data.logradouro), setBairro(data.bairro), setCidadeValue(data.localidade),setUfValue(data.uf)
+        })
+        
+      }
+
+    }    
+  }
+
+
+
+
+  
   const handleSelectMetodo = (type: string) => {
     setMetSelect(type);
     console.log(type);
   };
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (cart.length === 0) {
       navigate("/");
@@ -37,10 +74,8 @@ export default function Checkout() {
   }, [cart]);
 
   const totalValue = cart
-  .map((item) => parseFloat(item.value) * item.quantCart) // converte o valor de string para número
-  .reduce((acc, currentValue) => acc + currentValue, 0);
-  
-
+    .map((item) => parseFloat(item.value) * item.quantCart) // converte o valor de string para número
+    .reduce((acc, currentValue) => acc + currentValue, 0);
 
   const [send, setSend] = useState(false);
 
@@ -50,8 +85,13 @@ export default function Checkout() {
       return;
     } else {
       setSend(false);
-      navigate('/sucess')
-      return;
+      setLoadingReq(true);
+      setTimeout(() => {
+        setLoadingReq(false);
+
+        navigate("/sucess");
+        return;
+      }, 1500);
     }
 
     // Restante da lógica para confirmar o pedido
@@ -83,12 +123,14 @@ export default function Checkout() {
             <form className="mt-8 flex flex-col gap-5">
               <div className="input_cep relative">
                 <input
-                  type="number"
+                  type="text"
                   name="cep"
                   id="cep"
                   onChange={(e) => {
                     setCepValue(e.target.value);
                   }}
+                  onFocus={(e)=>{cepFocus()}}
+                  onBlur={(e)=>{cepOnBlur()}}
                   value={cepValue}
                   required
                   placeholder="CEP"
@@ -338,7 +380,7 @@ export default function Checkout() {
               }}
               className="w-full flex justify-center px-2 py-3 bg-yellow hover:bg-yellow-dark transition-all cursor-pointer text-base-white roboto font-bold uppercase rounded-md text-sm max-sm:text-xs"
             >
-              Confirmar pedido
+              {loadingReq ? <span><Spinner size={20} weight="fill" className="animate-spin" /></span> : <span>Confirmar pedido</span>}
             </span>
           </div>
         </div>

@@ -33,7 +33,7 @@ body * {
 
     /* adicione aqui um background-image para personalizar o ícone */
   }
- 
+
   section {
     &.hero {
       background-image: url(../medias/images/Background.png);
@@ -71,4 +71,22 @@ input {
       z-index: 999;
     }
   }
+}
+
+.successPage {
+  opacity: 0;
+  animation: show 1s ease forwards;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.successPage .show {
+  transform: translateX(0);
 }

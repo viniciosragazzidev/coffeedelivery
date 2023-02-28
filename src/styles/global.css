@@ -61,4 +61,21 @@ input.inputOpcional::after {
   right: 0;
   background: #000;
   z-index: 999;
+}
+
+.successPage {
+  opacity: 0;
+  animation: show 1s ease forwards;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.successPage .show {
+  transform: translateX(0);
 }/*# sourceMappingURL=global.css.map */

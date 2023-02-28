@@ -10,6 +10,8 @@ interface ContextType {
   setShowCart: (showCart: boolean) => void;
   openSidebarCart: boolean;
   setOpenSidebarCart: (showCart: boolean) => void;
+  loadingReq: boolean;
+  setLoadingReq: (loadingReq: boolean) => void;
   handleClickPlus: (id: number) => void;
   handleClickMinus: (id: number) => void;
   handleRemoveItemCard: (id: number) => void;
@@ -23,6 +25,12 @@ interface ContextType {
   setNumeroValue: (numeroValue: string) => void;
   complemento: string;
   setComplemento: (complemento: string) => void;
+  bairroValue: string;
+  setBairro: (complemento: string) => void;
+  cidadeValue: string;
+  setCidadeValue: (complemento: string) => void;
+  ufValue: string;
+  setUfValue: (complemento: string) => void;
 }
 
 export const DadosContext = createContext<ContextType>({
@@ -32,6 +40,8 @@ export const DadosContext = createContext<ContextType>({
   setNewCoffees: () => {},
   showCart: false,
   setShowCart: () => {},
+  loadingReq: false,
+  setLoadingReq: () => {},
   openSidebarCart: false,
   setOpenSidebarCart: () => {},
   handleClickPlus: (id: number) => {},
@@ -47,10 +57,17 @@ export const DadosContext = createContext<ContextType>({
   setNumeroValue: () => {},
   complemento: "",
   setComplemento: () => {},
+  bairroValue: "",
+  setBairro: () => {},
+  cidadeValue: "",
+  setCidadeValue: () => {},
+  ufValue: "",
+  setUfValue: () => {},
 });
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<CoffeesType[]>([]);
   const [showCart, setShowCart] = useState<boolean>(false);
+  const [loadingReq, setLoadingReq] = useState<boolean>(false);
   const [openSidebarCart, setOpenSidebarCart] = useState<boolean>(false);
   const [newCoffees, setNewCoffees] = useState<CoffeesType[]>([]);
   const [metSelect, setMetSelect] = useState<string>("");
@@ -58,6 +75,11 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [ruaValue, setRuaValue] = useState<string>("");
   const [numeroValue, setNumeroValue] = useState<string>("");
   const [complemento, setComplemento] = useState<string>("");
+  const [bairroValue, setBairro] = useState<string>("");
+
+  const [cidadeValue, setCidadeValue] = useState<string>("");
+
+  const [ufValue, setUfValue] = useState<string>("");
 
   const updateCart = (newCart: CoffeesType[]) => {
     setCart(newCart);
@@ -146,6 +168,14 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
         setNumeroValue,
         complemento,
         setComplemento,
+        loadingReq,
+        setLoadingReq,
+        bairroValue,
+        setBairro,
+        cidadeValue,
+        setCidadeValue,
+        ufValue,
+        setUfValue,
       }}
     >
       {children}
