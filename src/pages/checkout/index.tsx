@@ -13,15 +13,23 @@ import { DadosContext } from "../../context/ContextApp";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Checkout() {
-  const [metSelect, setMetSelect] = useState("");
-  const { cart, handleClickPlus, handleClickMinus, handleRemoveItemCard } =
-    useContext(DadosContext);
+  const { cart, handleClickPlus, handleClickMinus, handleRemoveItemCard,   metSelect,
+    setMetSelect,
+    cepValue,
+    setCepValue,
+    ruaValue,
+    setRuaValue,
+    numeroValue,
+    setNumeroValue,
+    complemento,
+    setComplemento, } =
+  useContext(DadosContext);
   const handleSelectMetodo = (type: string) => {
     setMetSelect(type);
     console.log(type);
   };
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     if (cart.length === 0) {
       navigate("/");
@@ -29,13 +37,10 @@ export default function Checkout() {
   }, [cart]);
 
   const totalValue = cart
-    .map((item) => parseFloat(item.value) * item.quantCart) // converte o valor de string para número
-    .reduce((acc, currentValue) => acc + currentValue, 0);
+  .map((item) => parseFloat(item.value) * item.quantCart) // converte o valor de string para número
+  .reduce((acc, currentValue) => acc + currentValue, 0);
+  
 
-  const [cepValue, setCepValue] = useState("");
-  const [ruaValue, setRuaValue] = useState("");
-  const [numeroValue, setNumeroValue] = useState("");
-  const [complemento, setComplemento] = useState("");
 
   const [send, setSend] = useState(false);
 
@@ -45,7 +50,7 @@ export default function Checkout() {
       return;
     } else {
       setSend(false);
-      alert("enviado");
+      navigate('/sucess')
       return;
     }
 
@@ -54,7 +59,7 @@ export default function Checkout() {
 
   return (
     <div className="w-full xl:px-[70px] max-2_xl:px-[60px]    max-xl:px-[40px] max-lg:px-[50px]  max-xs:px-4   py-24  max-[480px]:py-10 ">
-      <div className="flex gap-8 max-lg:flex-col">
+      <div className="flex gap-8 max-lg:flex-col justify-center">
         <div className="formArea text-black w-full  lg:max-w-[640px] flex flex-col gap-4 flex-1 ">
           <h2 className="baloo text-lg">Complete seu pedido</h2>
 
@@ -132,7 +137,7 @@ export default function Checkout() {
                     value={numeroValue}
                     required
                     placeholder="Numero"
-                    className="w-full max-w-[200px] p-3 max-sm:max-w-none placeholder:text-base-label text-base-text roboto bg-base-input border-base-button border rounded focus:outline-none focus:border-yellow-dark"
+                    className="w-full max-w-[200px] min-w-[155px] p-3 max-sm:max-w-none placeholder:text-base-label text-base-text roboto bg-base-input border-base-button border rounded focus:outline-none focus:border-yellow-dark"
                   />
                   <span
                     className={`absolute left-0 bottom-[-16px]  text-xs text-red-500  ${
@@ -239,9 +244,9 @@ export default function Checkout() {
           </div>
         </div>
 
-        <div className="cartValue w-full lg:max-w-[350px] xl:max-w-[520px]  flex flex-col  ">
+        <div className="cartValue w-full lg:max-w-[350px] xl:max-w-[590px]  flex flex-col  ">
           <h2 className="baloo text-lg mb-4">Cafés selecionados</h2>
-          <div className=" w-full bg-base-card   p-10 lg:p-5 max-xs:px-3 rounded-md max-lg:p-5  max-h-[360px] overflow-y-scroll ">
+          <div className=" w-full bg-base-card   p-10 lg:p-5 max-xs:px-3 xl:p-10 rounded-md max-lg:p-5  max-h-[360px] overflow-y-scroll ">
             <div className="products flex flex-col justify-center gap-3   ">
               {cart.map((product, i) => (
                 <div className="product w-full py-3 border-b-2 border-b-base-button  bg-base-card flex gap-5 rounded-md">

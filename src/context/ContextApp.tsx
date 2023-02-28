@@ -13,6 +13,16 @@ interface ContextType {
   handleClickPlus: (id: number) => void;
   handleClickMinus: (id: number) => void;
   handleRemoveItemCard: (id: number) => void;
+  metSelect: string;
+  setMetSelect: (metSelect: string) => void;
+  cepValue: string;
+  setCepValue: (cepValue: string) => void;
+  ruaValue: string;
+  setRuaValue: (ruaValue: string) => void;
+  numeroValue: string;
+  setNumeroValue: (numeroValue: string) => void;
+  complemento: string;
+  setComplemento: (complemento: string) => void;
 }
 
 export const DadosContext = createContext<ContextType>({
@@ -27,12 +37,27 @@ export const DadosContext = createContext<ContextType>({
   handleClickPlus: (id: number) => {},
   handleClickMinus: (id: number) => {},
   handleRemoveItemCard: (id: number) => {},
+  metSelect: "",
+  setMetSelect: () => {},
+  cepValue: "",
+  setCepValue: () => {},
+  ruaValue: "",
+  setRuaValue: () => {},
+  numeroValue: "",
+  setNumeroValue: () => {},
+  complemento: "",
+  setComplemento: () => {},
 });
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<CoffeesType[]>([]);
   const [showCart, setShowCart] = useState<boolean>(false);
   const [openSidebarCart, setOpenSidebarCart] = useState<boolean>(false);
   const [newCoffees, setNewCoffees] = useState<CoffeesType[]>([]);
+  const [metSelect, setMetSelect] = useState<string>("");
+  const [cepValue, setCepValue] = useState<string>("");
+  const [ruaValue, setRuaValue] = useState<string>("");
+  const [numeroValue, setNumeroValue] = useState<string>("");
+  const [complemento, setComplemento] = useState<string>("");
 
   const updateCart = (newCart: CoffeesType[]) => {
     setCart(newCart);
@@ -111,6 +136,16 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
         openSidebarCart,
         setOpenSidebarCart,
         handleRemoveItemCard,
+        metSelect,
+        setMetSelect,
+        cepValue,
+        setCepValue,
+        ruaValue,
+        setRuaValue,
+        numeroValue,
+        setNumeroValue,
+        complemento,
+        setComplemento,
       }}
     >
       {children}
